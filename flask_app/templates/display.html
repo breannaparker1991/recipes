@@ -12,11 +12,13 @@
 </head>
 <body>
 <div>
-  <h1 class="mx-auto text-primary"> Welcome {{user.first_name}}</h1>
-  <a href="/new">Create</a>
-  <a href="/logout">Logout</a>
-  <h3>These are the Recipes</h3>
-  <table class="table table-striped table-bordered">
+  <div class="d-flex">
+    <h1 class="text-primary mr-auto p-2"> Welcome {{user.first_name}}</h1>
+      <h4><a href="/new/recipe" class="m-2 p-2" >Create</a></h4>
+      <h4><a href="/logout" class="m-2 p-2" >Logout</a></h4>
+  </div>
+  <h3 class="m-2">These are the Recipes</h3>
+  <table class="table table-striped table-bordered mt-5" style="width: 1000px;">
     <tr class="text-primary">
       <th>Name</th>
       <th>Under 30 Minutes</th>
@@ -26,8 +28,18 @@
       {% for r in recipes %}
       <tr class="text-warning">
         <td>{{r.name}}</td>
-        <td>{{r.under_30}}</td>
-        <td><a href="/view">View</a> <a href="/edit">Edit</a><a href="/instructions">Instructions</a><a href="/destroy">Delete</a></td>
+        {% if recipe.under_30 == 1 %}
+          <td>Yes</td>
+          {% else %}
+          <td>No</td>
+        {% endif %}
+        <td>
+          <a href="/view/{{recipe.id}}">View Instructions</a> 
+          {% if recipe.user_id == session.user_id %}
+          <a href="/edit/{{recipe.id}}">Edit</a>
+          <a href="/destroy/{{recipe.id}}">Delete</a>
+          {% endif %}
+        </td>
       </tr>
       {% endfor %}
     </tbody>

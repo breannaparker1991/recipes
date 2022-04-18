@@ -36,7 +36,7 @@ def login():
     flash('invalid Email/Password')
     return redirect('/')
   if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
-    flash("Invalid Email/Password")
+    flash("Invalid Email/Password") 
     return redirect('/')
   session['user_id'] = user_in_db.id
   return redirect ('/display')
@@ -48,4 +48,11 @@ def diplay():
   data = {
     'id':session['user_id']
   }
-  return render_template("display.html")
+  recipes = Recipe.get_all()
+  user = User.get_one(data)
+  return render_template("display.html", recipes = recipes, user = user)
+
+@app.route('/logout') 
+def logout():
+  session.clear()
+  return redirect('/')

@@ -11,32 +11,45 @@
 <title>New</title>
 </head>
 <body>
-  <form action="/new/recipe" method="post">
-    <h1>Add New Recipe</h1>
-    <a href="/display">Dashboard</a>
-    <a href="/logout">Logout</a>
-    <div>
-      <label for="name">Name</label>
-      <input type="text" name="name">
+  <form action="/create/recipe" method="post">
+    <div class="d-flex justify-content-between">
+      <h1 class="m-2">Add New Recipe</h1>
+      <div class="d-flex m-2">
+        <h3><a href="/display" class="m-2">Dashboard</a></h3>
+        <h3><a href="/logout" class="m-2">Logout</a></h3>
+      </div>
     </div>
-    <div>
-      <label for="description">Description:</label>
-      <textarea name="description"cols="30" rows="10"></textarea>
+    
+    <div class="d-flex flex-column flex-wrap" style="height: 700px; margin-top:50px; margin-left: 50px; padding-left: 50px;">
+      <div class="m-2">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control">
+      </div>
+      <div class="m-2">
+        <label for="description">Description:</label>
+        <textarea name="description"cols="30" rows="10" class="form-control"></textarea>
+      </div>
+      <div class="m-2">
+        <label for="instructions">Instructions:</label>
+        <textarea name="instructions" cols="30" rows="10" class="form-control"></textarea>
+      </div>
+      <div class="m-2">
+        <label for="date_made">Date Made On:</label><br>
+        <input type="date" name="date_made">
+      </div>
+      <div class="m-2">
+        <label for="under_30">Under 30 Minutes?</label><br>
+        <div class="input-group-text">
+          <input type="radio" id="yes" name="under_30" value="0" class="form-control">
+          <label for="0">No</label>
+        </div>
+        <div class="input-group-text">
+          <input type="radio" id="no" name="under_30" value="1" class="form-control">
+          <label for="1"></label>
+        </div >
+      </div> 
     </div>
-    <div>
-      <label for="instructions">Instructions:</label>
-      <textarea name="instructions"cols="30" rows="10"></textarea>
-    </div>
-    <div>
-      <label for="created_at">Date Made On:</label>
-      <input type="date" name="created_at">
-    </div>
-    <div>
-      <label for="under_30">Under 30 Minutes?</label>
-      <input type="radio" name="under_30" value="Yes">
-      <input type="radio" name="under_30" value="No">
-    </div>
-    <input type="Submit" name="Create">
+    <input type="Submit" name="Create" style="margin: 50px;">
   </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
