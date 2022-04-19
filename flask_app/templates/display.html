@@ -14,7 +14,7 @@
 <div>
   <div class="d-flex">
     <h1 class="text-primary mr-auto p-2"> Welcome {{user.first_name}}</h1>
-      <h4><a href="/new/recipe" class="m-2 p-2" >Create</a></h4>
+      <h4><a href="/new" class="m-2 p-2" >Create</a></h4>
       <h4><a href="/logout" class="m-2 p-2" >Logout</a></h4>
   </div>
   <h3 class="m-2">These are the Recipes</h3>
@@ -28,14 +28,14 @@
       {% for r in recipes %}
       <tr class="text-warning">
         <td>{{r.name}}</td>
-        {% if recipe.under_30 == 1 %}
+        {% if r.under_30 == 1 %}
           <td>Yes</td>
           {% else %}
           <td>No</td>
         {% endif %}
         <td>
           <a href="/view/{{recipe.id}}">View Instructions</a> 
-          {% if recipe.user_id == session.user_id %}
+          {% if r.user_id == session.user_id %}
           <a href="/edit/{{recipe.id}}">Edit</a>
           <a href="/destroy/{{recipe.id}}">Delete</a>
           {% endif %}

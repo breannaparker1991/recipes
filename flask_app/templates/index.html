@@ -12,7 +12,7 @@
 <body>
   <div class="d-flex">
     <form action="/register" method="POST" class="col-4 bg-dark p-4 my-5 mx-auto text-light">
-      {% with messages = get_flashed_messages() %}
+      {% with messages = get_flashed_messages(category_filter= ['register']) %}
         {% if messages %}
           {% for message in messages %}
             <p>{{message}}</p>
@@ -43,7 +43,7 @@
       <input type="Submit" name="Submit" class="btn btn-primary">
     </form>
     <form action="/login" method="POST" class="col-4 bg-dark p-4 my-5 mx-auto text-light">
-      {% with messages = get_flashed_messages() %}
+      {% with messages = get_flashed_messages(category_filter= ['login']) %}
         {% if messages %}
           {% for message in messages %}
             <p>{{message}}</p>

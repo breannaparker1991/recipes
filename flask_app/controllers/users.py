@@ -33,10 +33,10 @@ def login():
   data = {'email': request.form['email']}
   user_in_db = User.get_email(data)
   if not user_in_db:
-    flash('invalid Email/Password')
+    flash('invalid Email/Password', 'login')
     return redirect('/')
   if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
-    flash("Invalid Email/Password") 
+    flash("Invalid Email/Password", 'login') 
     return redirect('/')
   session['user_id'] = user_in_db.id
   return redirect ('/display')
@@ -50,7 +50,8 @@ def diplay():
   }
   recipes = Recipe.get_all()
   user = User.get_one(data)
-  return render_template("display.html", recipes = recipes, user = user)
+  recipe = Recipe.get_one(data)
+  return render_template("display.html", recipes = recipes, user = user, recipe = recipe)
 
 @app.route('/logout') 
 def logout():
