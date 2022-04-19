@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Title</title>
 </head>
 <body>
-  <h1>Welcome{{user.first_name}}</h1> <a href="/display">Dashboard</a><a href="/logout">Logout</a>
-  <h3>{{recipe.name}}</h3>
-  <div class="bordered">
-    {{recipe.description}}
-    {{recipe.under_30}}
-    {{recipe.instructions}}
-    {{recipe.date_made}}
+  <div class="d-flex">
+    <h1 class="mr-auto p-2">Welcome {{user.first_name}}</h1> 
+    <h5 class="p-2"><a href="/display">Dashboard</a></h5>
+    <h5 class="p-2"><a href="/logout">Logout</a></h5>
   </div>
+  <h3 class="text-center">{{recipe.name}}</h3>
+  <div class="bordered col-4 bg-dark p-4 my-5 mx-auto text-light d-flex justify-content-between">
+    <div>
+      <h4>Description</h4>
+      <h4>Under 30 Minutes</h4>
+      <h4>Instructions</h4>
+      <h4>Recipe was Made</h4>
+    </div>
+      <div>
+        <p>{{recipe.description}}</p>
+        <p>        
+          {% if recipe.under_30 == 1 %}
+            Yes
+              {% else %}
+            No
+          {% endif %}
+      </p>
+      <p>{{recipe.instructions}}</p>
+      <p>{{recipe.date_made}}</p>
+      </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
 </html>

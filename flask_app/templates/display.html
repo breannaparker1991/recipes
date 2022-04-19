@@ -34,10 +34,10 @@
           <td>No</td>
         {% endif %}
         <td>
-          <a href="/view/{{recipe.id}}">View Instructions</a> 
+          <a href="/view/{{r.id}}">View Instructions</a> 
           {% if r.user_id == session.user_id %}
-          <a href="/edit/{{recipe.id}}">Edit</a>
-          <a href="/destroy/{{recipe.id}}">Delete</a>
+          <a href="/edit/{{r.id}}">Edit</a>
+          <a href="/destroy/{{r.id}}">Delete</a>
           {% endif %}
         </td>
       </tr>

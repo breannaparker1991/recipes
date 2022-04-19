@@ -34,7 +34,7 @@ def create():
 
 @app.route('/destroy/<int:id>')
 def destroy(id):
-  if 'user_ud' not in session:
+  if 'user_id' not in session:
     return redirect('/logout')
   data = {
     'id' : id
@@ -52,10 +52,10 @@ def view(id):
   user = {
     'id':session['user_id']
   }
-  return redirect ('recipes.html', recipe = Recipe.get_one(data), user = User.get_one(user))
+  return render_template('recipes.html', recipe = Recipe.get_one(data), user = User.get_one(user))
 
 @app.route('/edit/<int:id>')
-def edit():
+def edit(id):
   if 'user_id' not in session:
     return redirect('/logout')
   data = {
@@ -78,7 +78,7 @@ def update():
     'instructions': request.form['instructions'], 
     'under_30': request.form['under_30'],
     'date_made':request.form['date_made'],
-    'id': session['id']
+    'id': request.form['id']
   }
   Recipe.update(data)
   return redirect('/display')

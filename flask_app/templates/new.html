@@ -19,7 +19,13 @@
         <h3><a href="/logout" class="m-2">Logout</a></h3>
       </div>
     </div>
-    
+    {% with messages = get_flashed_messages(category_filter=['recipe']) %}
+      {% if messages %}
+        {% for message in messages %}
+          {{message}}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
     <div class="d-flex flex-column flex-wrap" style="height: 700px; margin-top:50px; margin-left: 50px; padding-left: 50px;">
       <div class="m-2">
         <label for="name">Name</label>
@@ -40,12 +46,12 @@
       <div class="m-2">
         <label for="under_30">Under 30 Minutes?</label><br>
         <div class="input-group-text">
-          <input type="radio" id="yes" name="under_30" value="0" class="form-control">
-          <label for="0">Yes</label>
+          <label for="0">No</label>
+          <input type="radio" id="no" name="under_30" value="0" class="form-control">
         </div>
         <div class="input-group-text">
-          <input type="radio" id="no" name="under_30" value="1" class="form-control">
-          <label for="1">No</label>
+          <label for="1">Yes</label>
+          <input type="radio" id="yes" name="under_30" value="1" class="form-control">
         </div >
       </div> 
     </div>
